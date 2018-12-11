@@ -29,12 +29,12 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CityModel model = new CityModel();
+		var model = new CityModel();
 		
-		response.getWriter().
-			append("Served at: ").
-			append(request.getContextPath()).
-			append(model.getConnection().toString());
+		for(var city : model.getAllCities()) {
+			response.getWriter().append(city.getName() + "<br>");
+		}
+		response.getWriter().append(model.getCityById(1).getName());
 	}
 
 }
